@@ -8,6 +8,13 @@ wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_parent_styles' );
 
+
+add_action( 'wp_enqueue_scripts', 'enqueue_consent_banner_script' );
+function enqueue_consent_banner_script() {
+    wp_enqueue_script( 'consent-banner-script', get_stylesheet_directory_uri() . '/consent-banner.php', array(), '1.0.0', true );
+}
+
+
 function custom_css() {
   if (strpos(get_site_url(), 'lucymesquita.store') !== false) {
     wp_enqueue_style( 'lucymesquita-custom', get_stylesheet_directory_uri() . '/lucymesquita.css' );
